@@ -1,17 +1,164 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Panel de control de Huubie - Métricas y estadísticas" />
+    <title>Huubie Dashboard</title>
     <link href="./output.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   </head>
-  <body>
-    <h1 class="text-3xl -text-blue500">Hello world!</h1>
-		<button id="btn" class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 
-         hover:from-pink-500 hover:to-yellow-500 
-         text-white font-bold py-2 px-4 rounded-full shadow-lg 
-         transition duration-300 ease-in-out transform hover:scale-105">Haz clic</button>
+  <body class="bg-gradient-to-br from-[#0F172A] to-[#1E293B] min-h-screen text-white p-8">
+    <header class="mb-10 flex items-center justify-between">
+      <h1 class="text-4xl font-bold bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
+        Huubie Dashboard
+      </h1>
+    </header>
+
+    <main>
+      <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 animate__animated animate__fadeInUp">
+        
+        <!-- Métricas Totales -->
+        <article class="group relative bg-gradient-to-br from-blue-500/5 via-indigo-500/5 to-purple-600/5 p-7 rounded-3xl border border-blue-500/10 backdrop-blur-lg hover:border-blue-400/20 transition-all duration-500">
+          <div class="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-purple-600 rounded-3xl opacity-0 group-hover:opacity-10 blur transition duration-500"></div>
+          <div class="absolute inset-0 bg-grid-white/[0.02] rounded-3xl"></div>
+          
+          <div class="relative z-10">
+            <h2 class="text-blue-300 text-sm font-medium mb-4 flex items-center gap-2">
+              <span class="p-1.5 bg-blue-500/10 rounded-lg">
+                <span class="material-icons text-base">event</span>
+              </span>
+              Total Eventos
+            </h2>
+            <div class="flex justify-between items-start">
+              <div>
+                <output class="text-5xl font-bold text-white tracking-tight">124</output>
+                <p class="text-xs text-blue-300/60 mt-1">eventos totales</p>
+              </div>
+              <aside class="flex flex-col items-end">
+                <span class="text-sm bg-emerald-500/10 px-3 py-1 rounded-full font-medium">
+                  <span class="text-emerald-400">↑ 12%</span>
+                </span>
+                <div class="mt-4 flex gap-3 bg-white/5 px-3 py-2 rounded-xl">
+                  <span class="text-emerald-400 flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    85
+                  </span>
+                  <span class="text-amber-400 flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+                    30
+                  </span>
+                  <span class="text-rose-400 flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-rose-400"></span>
+                    9
+                  </span>
+                </div>
+              </aside>
+            </div>
+          </div>
+        </article>
+
+        <!-- Ingresos -->
+        <article class="group relative bg-gradient-to-br from-emerald-500/5 via-teal-500/5 to-cyan-500/5 p-7 rounded-3xl border border-emerald-500/10 backdrop-blur-lg hover:border-emerald-400/20 transition-all duration-500">
+          <div class="absolute -inset-0.5 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-3xl opacity-0 group-hover:opacity-10 blur transition duration-500"></div>
+          <div class="absolute inset-0 bg-grid-white/[0.02] rounded-3xl"></div>
+          
+          <div class="relative z-10">
+            <h2 class="text-emerald-300 text-sm font-medium mb-4 flex items-center gap-2">
+              <span class="p-1.5 bg-emerald-500/10 rounded-lg">
+                <span class="material-icons text-base">payments</span>
+              </span>
+              Ingresos Totales
+            </h2>
+            <div class="flex flex-col gap-3">
+              <div class="flex justify-between items-start">
+                <output class="text-5xl font-bold text-white tracking-tight">$45.8K</output>
+                <span class="text-sm bg-emerald-500/10 px-3 py-1 rounded-full font-medium">
+                  <span class="text-emerald-400">↑ 8%</span>
+                </span>
+              </div>
+              <div class="space-y-2">
+                <div class="flex justify-between text-xs">
+                  <span class="text-emerald-300/60">Meta mensual</span>
+                  <span class="text-emerald-300">$60K</span>
+                </div>
+                <div class="h-2 bg-emerald-950/50 rounded-full overflow-hidden">
+                  <div class="h-full w-[76%] bg-gradient-to-r from-emerald-400 to-teal-500 rounded-full animate-pulse"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Cotizaciones -->
+        <article class="group relative bg-gradient-to-br from-amber-500/5 via-orange-500/5 to-red-500/5 p-7 rounded-3xl border border-amber-500/10 backdrop-blur-lg hover:border-amber-400/20 transition-all duration-500">
+          <div class="absolute -inset-0.5 bg-gradient-to-r from-amber-500 to-orange-500 rounded-3xl opacity-0 group-hover:opacity-10 blur transition duration-500"></div>
+          <div class="absolute inset-0 bg-grid-white/[0.02] rounded-3xl"></div>
+          
+          <div class="relative z-10">
+            <h2 class="text-amber-300 text-sm font-medium mb-4 flex items-center gap-2">
+              <span class="p-1.5 bg-amber-500/10 rounded-lg">
+                <span class="material-icons text-base">description</span>
+              </span>
+              Cotizaciones Pendientes
+            </h2>
+            <div class="flex justify-between items-start">
+              <div>
+                <output class="text-5xl font-bold text-white tracking-tight">18</output>
+                <p class="text-xs text-amber-300/60 mt-1">por aprobar</p>
+              </div>
+              <aside class="flex flex-col items-end">
+                <span class="text-sm bg-rose-500/10 px-3 py-1 rounded-full font-medium">
+                  <span class="text-rose-400">↓ 25%</span>
+                </span>
+                <div class="mt-4 text-xs text-amber-300/60">
+                  vs. mes anterior
+                </div>
+              </aside>
+            </div>
+          </div>
+        </article>
+
+        <!-- Clientes -->
+        <article class="group relative bg-gradient-to-br from-purple-500/5 via-fuchsia-500/5 to-pink-500/5 p-7 rounded-3xl border border-purple-500/10 backdrop-blur-lg hover:border-purple-400/20 transition-all duration-500">
+          <div class="absolute -inset-0.5 bg-gradient-to-r from-purple-500 to-pink-500 rounded-3xl opacity-0 group-hover:opacity-10 blur transition duration-500"></div>
+          <div class="absolute inset-0 bg-grid-white/[0.02] rounded-3xl"></div>
+          
+          <div class="relative z-10">
+            <h2 class="text-purple-300 text-sm font-medium mb-4 flex items-center gap-2">
+              <span class="p-1.5 bg-purple-500/10 rounded-lg">
+                <span class="material-icons text-base">group</span>
+              </span>
+              Clientes Nuevos
+            </h2>
+            <div class="flex justify-between items-start">
+              <div>
+                <output class="text-5xl font-bold text-white tracking-tight">32</output>
+                <p class="text-xs text-purple-300/60 mt-1">este mes</p>
+              </div>
+              <aside class="flex flex-col items-end">
+                <span class="text-sm bg-emerald-500/10 px-3 py-1 rounded-full font-medium">
+                  <span class="text-emerald-400">↑ 15%</span>
+                </span>
+                <div class="mt-4 flex gap-2 items-center">
+                  <div class="flex -space-x-2">
+                    <div class="w-6 h-6 rounded-full bg-purple-500/20"></div>
+                    <div class="w-6 h-6 rounded-full bg-pink-500/20"></div>
+                    <div class="w-6 h-6 rounded-full bg-fuchsia-500/20"></div>
+                  </div>
+                  <span class="text-xs text-purple-300/60">+29 más</span>
+                </div>
+              </aside>
+            </div>
+          </div>
+        </article>
+
+      </section>
+    </main>
+
+    <script src="./jquery_min.js" defer></script>
+    <script src="./app.js" defer></script>
   </body>
-  <script src="./jquery_min.js" ></script>
-  <script src="./app.js"></script>
 </html>
+
