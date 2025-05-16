@@ -1,5 +1,7 @@
 let chartInstance = null;
 let monthlyChartInstance = null;
+let trendChartInstance = null;
+
 
 // Datos para la gráfica de dona
 const chartData = {
@@ -191,6 +193,8 @@ $(document).ready(function () {
 
     // Inicializar gráfica de barras
     initMonthlyChart();
+    //inicializar grafica de lineas
+    inittrendChart();
     
     $(window).resize(function() {
         if (chartInstance) {
@@ -201,3 +205,47 @@ $(document).ready(function () {
         }
     });
 });
+
+//Grafica de lineas (tendecia de ganancias)
+
+const trendChardData={
+    labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun'],
+      datasets: [{
+        label: 'Ganancias Mensuales',
+        data: [24000,35000,20000,30000,18000,26000], // aquí tus datos
+        fill: false,
+        borderColor: 'rgba(0, 255, 132, 1)',
+        tension: 0.3
+      }]
+
+}
+
+const trendChartOptions={
+    
+      responsive: true,
+      plugins: {
+        legend: { display: true },
+        tooltip: { enabled: true }
+      },
+      scales: {
+        y: {
+          beginAtZero: false,
+          ticks: {
+            callback: value => `$${value}` // formato dinero
+          }
+        }
+      }
+    
+}
+
+
+function inittrendChart() {
+    const ctx = document.getElementById('trendChard').getContext('2d');
+    trendChartInstance = new Chart(ctx, {
+        type: 'line',
+        data: trendChardData,
+        options: trendChartOptions
+    });
+}
+
+
