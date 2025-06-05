@@ -4,7 +4,7 @@ let monthlyChartInstance = null;
 // ================== GRÁFICAS ==================
 
 const chartData = {
-    type: {
+    tipo: {
         labels: ['Conciertos', 'Bodas', 'Conferencias', 'Deportes', 'Otros'],
         datasets: [{
             data: [35, 25, 20, 15, 5],
@@ -13,7 +13,7 @@ const chartData = {
             borderRadius: 4
         }]
     },
-    location: {
+    localizacion: {
         labels: ['Tapachula', 'Tuxtla Gtz', 'Huixtla', 'Comitan', 'San Cristobal'],
         datasets: [{
             data: [45, 25, 20, 18, 16],
@@ -24,33 +24,6 @@ const chartData = {
     }
 };
 
-const chartOptions = {
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: {
-        legend: {
-            position: 'right',
-            labels: {
-                color: '#94a3b8',
-                padding: 15,
-                font: { size: 12 },
-                usePointStyle: true,
-                pointStyle: 'circle'
-            }
-        },
-        tooltip: {
-            backgroundColor: 'rgba(15, 23, 42, 0.9)',
-            padding: 8,
-            bodyFont: { size: 12 },
-            boxPadding: 4
-        }
-    },
-    cutout: '65%',
-    animation: {
-        animateScale: true,
-        animateRotate: true
-    }
-};
 
 const monthlyChartData = {
     labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio'],
@@ -73,85 +46,6 @@ const monthlyChartData = {
         }
     ]
 };
-
-const monthlyChartOptions = {
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: {
-        legend: {
-            position: 'top',
-            labels: {
-                color: '#94a3b8',
-                font: { size: 12 },
-                usePointStyle: true,
-                pointStyle: 'circle'
-            }
-        },
-        tooltip: {
-            backgroundColor: 'rgba(15, 23, 42, 0.9)',
-            padding: 8,
-            bodyFont: { size: 12 },
-            boxPadding: 4,
-            callbacks: {
-                label: function (context) {
-                    let label = context.dataset.label || '';
-                    if (label === 'Ingresos') {
-                        return `${label}: $${context.parsed.y}K`;
-                    }
-                    return `${label}: ${context.parsed.y}`;
-                }
-            }
-        }
-    },
-    scales: {
-        x: {
-            ticks: { color: '#94a3b8' },
-            grid: { display: false }
-        },
-        y: {
-            type: 'linear',
-            display: true,
-            position: 'left',
-            beginAtZero: true,
-            ticks: {
-                color: '#94a3b8',
-                callback: value => `${value} eventos`
-            },
-            grid: { color: '#334155' }
-        },
-        y1: {
-            type: 'linear',
-            display: true,
-            position: 'right',
-            beginAtZero: true,
-            grid: { drawOnChartArea: false },
-            ticks: {
-                color: '#94a3b8',
-                callback: value => `$${value}K`
-            }
-        }
-    }
-};
-
-function updateChart(type) {
-    if (chartInstance) chartInstance.destroy();
-
-    const ctx = document.getElementById('eventChart').getContext('2d');
-    chartInstance = new Chart(ctx, {
-        type: 'doughnut',
-        data: chartData[type],
-        options: chartOptions
-    });
-}
-
-function initMonthlyChart() {
-    const ctx = document.getElementById('monthlyChart').getContext('2d');
-    monthlyChartInstance = new Chart(ctx, {
-        type: 'bar',
-        data: monthlyChartData,
-        options: monthlyChartOptions
-    });
-}
 
 //  INICIALIZACIÓN 
 
@@ -210,16 +104,6 @@ $(document).ready(function() {
     // Crear las cards
     cards.forEach(card => cardMetric(card));
 
-    // Iniciar gráficas
-    updateChart('type');
-    initMonthlyChart();
-
-    // Tabs de gráfica de dona
-    $('.chart-tab').click(function () {
-        $('.chart-tab').removeClass('active bg-[#1C64F1] text-white').addClass('text-slate-400');
-        $(this).addClass('active bg-[#1C64F1] text-white').removeClass('text-slate-400');
-        updateChart($(this).data('type'));
-    });
 
     // Redimensionamiento
     $(window).resize(function () {
@@ -227,3 +111,59 @@ $(document).ready(function() {
         monthlyChartInstance?.resize();
     });
 });
+
+//Datos de prueba
+const trendChardData={
+    labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun'],
+      datasets: [{
+        label: 'Ganancias Mensuales',
+        data: [24000,35000,20000,30000,18000,26000],
+        fill: false,
+        borderColor: 'rgba(0, 255, 132, 1)',
+        tension: 0.3
+      }]
+
+}
+
+
+//Grafica de barras
+graficComponent({
+  parent: '#graficas',
+  id: 'ventasChart',
+  icon: 'bar_chart',
+  title: 'Ventas por Categoría',
+  subtitle: 'Comparativo mensual',
+  chartType: 'bar', // <--- Aquí defines que es un gráfico de barras
+  chartData: {
+    default: monthlyChartData
+  },
+    defaultCategory: 'default'
+
+});
+
+
+//Garfica de dona
+graficComponent({
+  parent: '#graficas',
+  id: 'distribucionEventos',
+  icon: 'donut_large',
+  title: 'Distribución de Eventos',
+  subtitle: 'Por tipo o ubicación',
+  chartType: 'doughnut',
+  chartData: chartData,
+  defaultCategory: 'tipo',
+  ajustarTam: false
+});
+//Grafica de lineas
+graficComponent({
+    parent: '#graficas',
+    id: 'gananciasChart',
+    icon: 'trending_up',
+    title: 'Tendencias',
+    subtitle: 'Evolución de ingresos',
+    chartType: 'line',
+    chartData: {
+    default: trendChardData
+  },
+    defaultCategory: 'default' 
+  });
