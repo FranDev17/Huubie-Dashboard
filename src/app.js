@@ -1,19 +1,14 @@
 let chartInstance = null;
 let monthlyChartInstance = null;
 
-// Datos para la gráfica de dona
+// ================== GRÁFICAS ==================
+
 const chartData = {
     type: {
         labels: ['Conciertos', 'Bodas', 'Conferencias', 'Deportes', 'Otros'],
         datasets: [{
             data: [35, 25, 20, 15, 5],
-            backgroundColor: [
-                '#1C64F1', 
-                '#E60001', 
-                '#0E9E6E', 
-                '#FE6F00', 
-                '#7152EC'  
-            ],
+            backgroundColor: ['#1C64F1', '#E60001', '#0E9E6E', '#FE6F00', '#7152EC'],
             borderWidth: 0,
             borderRadius: 4
         }]
@@ -22,13 +17,7 @@ const chartData = {
         labels: ['Tapachula', 'Tuxtla Gtz', 'Huixtla', 'Comitan', 'San Cristobal'],
         datasets: [{
             data: [45, 25, 20, 18, 16],
-            backgroundColor: [
-                '#1C64F1',
-                '#E60001',
-                '#FE6F00',
-                '#7152EC',
-                '#0E9E6E'
-            ],
+            backgroundColor: ['#1C64F1', '#E60001', '#FE6F00', '#7152EC', '#0E9E6E'],
             borderWidth: 0,
             borderRadius: 4
         }]
@@ -37,7 +26,7 @@ const chartData = {
 
 const chartOptions = {
     responsive: true,
-    maintainAspectRatio: false, 
+    maintainAspectRatio: false,
     plugins: {
         legend: {
             position: 'right',
@@ -63,7 +52,6 @@ const chartOptions = {
     }
 };
 
-// Datos para la gráfica de barras
 const monthlyChartData = {
     labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio'],
     datasets: [
@@ -105,7 +93,7 @@ const monthlyChartOptions = {
             bodyFont: { size: 12 },
             boxPadding: 4,
             callbacks: {
-                label: function(context) {
+                label: function (context) {
                     let label = context.dataset.label || '';
                     if (label === 'Ingresos') {
                         return `${label}: $${context.parsed.y}K`;
@@ -125,11 +113,9 @@ const monthlyChartOptions = {
             display: true,
             position: 'left',
             beginAtZero: true,
-            ticks: { 
+            ticks: {
                 color: '#94a3b8',
-                callback: function(value) {
-                    return value + ' eventos';
-                }
+                callback: value => `${value} eventos`
             },
             grid: { color: '#334155' }
         },
@@ -138,20 +124,15 @@ const monthlyChartOptions = {
             display: true,
             position: 'right',
             beginAtZero: true,
-            grid: { 
-                drawOnChartArea: false
-            },
+            grid: { drawOnChartArea: false },
             ticks: {
                 color: '#94a3b8',
-                callback: function(value) {
-                    return '$' + value + 'K';
-                }
+                callback: value => `$${value}K`
             }
         }
     }
 };
 
-// Función para actualizar gráfica de dona
 function updateChart(type) {
     if (chartInstance) chartInstance.destroy();
 
@@ -163,7 +144,6 @@ function updateChart(type) {
     });
 }
 
-// Función para inicializar gráfica de barras
 function initMonthlyChart() {
     const ctx = document.getElementById('monthlyChart').getContext('2d');
     monthlyChartInstance = new Chart(ctx, {
@@ -173,31 +153,77 @@ function initMonthlyChart() {
     });
 }
 
+//  INICIALIZACIÓN 
 
-$(document).ready(function () {
-   
-    $('.relative.h-[250px]').css('height', '250px');
+$(document).ready(function() {
     
-    // Gráfica de dona inicial
-    updateChart('type');
+    $("#metricsGrid").empty();
 
-    // Tabs de la gráfica de dona
+    const cards = [
+        {
+            parent: "#metricsGrid",
+            id: "cardEventos",
+            title: "Total Eventos",
+            icon: "event",
+            type: "status",
+            data: {
+                main: "245",
+                description: "+12% respecto al período anterior",
+                detail: [
+                    { label: "Confirmados", value: 183, color: "bg-green-500" },
+                    { label: "Pendientes", value: 42, color: "bg-yellow-400" },
+                    { label: "Cancelados", value: 20, color: "bg-red-400" }
+                ]
+            }
+        },
+        {
+            parent: "#metricsGrid",
+            id: "cardIngresos",
+            title: "Ingresos Totales",
+            icon: "payments",
+            type: "progress",
+            data: {
+                main: "$2510K",
+                description: "+8% respecto al período anterior",
+                goal: {
+                    current: 2510,
+                    target: 3200,
+                    percentage: 78
+                }
+            }
+        },
+        {
+            parent: "#metricsGrid",
+            id: "cardCotizaciones",
+            title: "Cotizaciones Pendientes",
+            icon: "query_stats",
+            type: "simple",
+            data: {
+                main: "78",
+                description: "+5% respecto al mes anterior"
+            }
+        }
+
+        
+    ];
+
+    // Crear las cards
+    cards.forEach(card => cardMetric(card));
+
+    // Iniciar gráficas
+    updateChart('type');
+    initMonthlyChart();
+
+    // Tabs de gráfica de dona
     $('.chart-tab').click(function () {
         $('.chart-tab').removeClass('active bg-[#1C64F1] text-white').addClass('text-slate-400');
         $(this).addClass('active bg-[#1C64F1] text-white').removeClass('text-slate-400');
-
         updateChart($(this).data('type'));
     });
 
-    // Inicializar gráfica de barras
-    initMonthlyChart();
-    
-    $(window).resize(function() {
-        if (chartInstance) {
-            chartInstance.resize();
-        }
-        if (monthlyChartInstance) {
-            monthlyChartInstance.resize();
-        }
+    // Redimensionamiento
+    $(window).resize(function () {
+        chartInstance?.resize();
+        monthlyChartInstance?.resize();
     });
 });
