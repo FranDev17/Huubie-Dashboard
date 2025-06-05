@@ -9,11 +9,15 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="./jquery_min.js" defer></script>
+    <script src="components.js"></script>
+    <script src="./app.js" defer></script>
+
   </head>
-  <body class="bg-gradient-to-br from-[#0F172A] to-[#1E293B] min-h-screen text-white p-8">
+  <body class="dark:bg-gray-900 min-h-screen text-white p-8">
     <header class="mb-10 items-center justify-between">
 
-    <nav class="bg-white  border-gray-200 dark:bg-gray-900">
+    <nav class="bg-white  border-gray-200 dark:bg-gray-800">
       <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
 
       <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
@@ -24,7 +28,7 @@
       </a>
 
       <div class="hidden w-full md:block md:w-auto" id="navbar-default">
-      <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+      <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-800 dark:border-gray-800">
         <li>
           <a href="#" class="block py-2 px-3 text-white bg-blue-700 rounded-sm md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500 flex items-center">
             <span class="material-icons text-lg">dashboard</span>
@@ -185,56 +189,13 @@
       </section>
 
       <!-- sección de gráficas -->
-      <section class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+      <section id="graficas" class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
         <!-- Gráfica de Barras  -->
-        <div class="bg-slate-800/50 p-6 rounded-3xl border border-slate-700/50 backdrop-blur-sm">
-          <div class="mb-4">
-            <h2 class="text-sm font-medium flex items-center gap-2">
-              <span class="material-icons text-emerald-400 text-lg">bar_chart</span>
-              Eventos por Mes
-            </h2>
-            <p class="text-xs text-slate-400">Número de eventos y ingresos mensuales</p>
-          </div>
-          <div class="relative h-[250px]">
-            <canvas id="monthlyChart"></canvas>
-          </div>
-        </div>
-
         <!-- Gráfica de Dona -->
-        <div class="bg-slate-800/50 p-6 rounded-3xl border border-slate-700/50 backdrop-blur-sm">
-          <div class="flex items-center justify-between mb-4">
-            <h2 class="text-sm font-medium flex items-center gap-2">
-              <span class="material-icons text-blue-400 text-lg">pie_chart</span>
-              Distribución de Eventos
-            </h2>
-            <div class="flex bg-slate-900/50 rounded-lg p-0.5">
-              <button class="chart-tab active bg-[#1C64F1] px-2.5 py-1 rounded-md text-xs font-medium text-white transition-all duration-300" data-type="type">
-                Por Tipo
-              </button>
-              <button class="chart-tab px-2.5 py-1 rounded-md text-xs font-medium text-slate-400 hover:text-white transition-all duration-300" data-type="location">
-                Por Ubicación
-              </button>
-            </div>
-          </div>
-          <div class="relative h-[250px]">
-            <canvas id="eventChart"></canvas>
-          </div>
-        </div>
+      
       </section>
 
-      <section class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
-         <div class="bg-slate-800/50 p-6 rounded-3xl border border-slate-700/50 backdrop-blur-sm">
-          <div class="mb-4">
-            <h2 class="text-sm font-medium flex items-center gap-2">
-              <span class="material-icons text-emerald-400 text-lg">show_chart</span>
-              Tendencias
-            </h2>
-            <p class="text-xs text-slate-400">Evolucion de ingresos</p>
-          </div>
-          <div class="relative h-[250px]">
-            <canvas id="trendChard"></canvas>
-          </div>
-        </div>
+      <section id="graficaspt2" class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
 
 
         <div class="bg-slate-800/50 p-6 rounded-3xl border border-slate-700/50 backdrop-blur-sm">
@@ -319,8 +280,6 @@
 
     </main>
 
-    <script src="./jquery_min.js" defer></script>
-    <script src="./app.js" defer></script>
   </body>
 </html>
 
