@@ -11,6 +11,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="./jquery_min.js" defer></script>
     <script src="components.js"></script>
+    <script src="lista.js"></script>
     <script src="./app.js" defer></script>
 
   </head>
@@ -30,13 +31,13 @@
       <div class="hidden w-full md:block md:w-auto" id="navbar-default">
       <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-800 dark:border-gray-800">
         <li>
-          <a href="#" class="block py-2 px-3 text-white bg-blue-700 rounded-sm md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500 flex items-center">
+          <a href="#" class="block py-2 px-3 text-white bg-blue-700 rounded-sm md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500 items-center">
             <span class="material-icons text-lg">dashboard</span>
             Dashboard</a>
         </li>
        
         <li>
-          <a href="#" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent flex">
+          <a href="#" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
             <span class="material-icons text-lg">calendar_month</span>
             Calendario
           </a>
@@ -196,86 +197,6 @@
       </section>
 
       <section id="graficaspt2" class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
-
-
-        <div class="bg-slate-800/50 p-6 rounded-3xl border border-slate-700/50 backdrop-blur-sm">
-          <div class="mb-4">
-            <h2 class="text-sm font-medium flex items-center gap-2">
-              <span class="material-icons text-emerald-400 text-lg">event</span>
-              Proximos eventos
-            </h2>
-            <p class="text-xs text-slate-400">Eventos programados para los proximos dias</p>
-          </div>
-          <div class="relative h-[250px]">
-            
-
-            <div class="relative overflow-x-auto">
-                <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                        <tr>
-                            <th scope="col" class="px-6 py-3">
-                                Tipo de evento
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Nombre
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Lugar
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Fecha
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                Boda
-                            </th>
-                            <td class="px-6 py-4">
-                                Alvin y Tamara
-                            </td>
-                            <td class="px-6 py-4">
-                                Tapachula
-                            </td>
-                            <td class="px-6 py-4">
-                                15 de mayo, 2025
-                            </td>
-                        </tr>
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                Conferencia
-                            </th>
-                            <td class="px-6 py-4">
-                                Inversionistas de hotel
-                            </td>
-                            <td class="px-6 py-4">
-                                Tuxtla
-                            </td>
-                            <td class="px-6 py-4">
-                                17 de mayo, 2025
-                            </td>
-                        </tr>
-                        <tr class="bg-white dark:bg-gray-800">
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                Deportes
-                            </th>
-                            <td class="px-6 py-4">
-                                Linces vs Panteras
-                            </td>
-                            <td class="px-6 py-4">
-                                Tapachula
-                            </td>
-                            <td class="px-6 py-4">
-                                28 de mayo, 2025
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-          </div>
-        </div>
       </section>
 
     </main>

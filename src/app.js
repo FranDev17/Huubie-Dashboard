@@ -119,3 +119,33 @@ graficComponent({
 
 
 
+
+
+
+  //Lista 
+
+const infoeventos=[
+  {
+    title: "Concierto de Rock",
+    subtitle1: { icon: "event", text: "15 de mayo, 2025" },
+    subtitle2: { icon: "", text: "Auditorio Nacional" },
+    detail: "$500"
+  },
+  {
+    title: "Conferencia de Tecnología",
+    subtitle1: { icon: "event", text: "18 de mayo, 2025" },
+    subtitle2: { icon: "", text: "Centro de Convenciones" },
+    detail: "$250"
+  }
+]
+  
+
+
+ new ListaInfo({
+     parent: "graficaspt2",
+     id: "listaEventos",
+     title: "Próximos Eventos",
+     subtitle: "Eventos programados para los próximos días",
+     iconTitle: "calendar_month",
+     items: infoeventos
+ })
